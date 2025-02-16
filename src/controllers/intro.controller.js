@@ -5,7 +5,7 @@ exports.postintro=async(req,res)=>{
                 heading, metaInfo, experience, projects,}=req.body
             const santized=userName.replace(/\s+/g, '_').toLowerCase()
             const find=await introModel.findOne({userName:santized})
-            if(find.length>0){
+            if(find){
                 return res.send({count:1});
             }
             else{
