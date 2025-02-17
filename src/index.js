@@ -23,7 +23,7 @@ app.post('/vcard',async(req,res)=>{
  vCard.name = name;
  vCard.phone = phone;
  vCard.email = email;
- vCard.address = address;
+ vCard.homeAddress.street = address;
  vCard.workAddress = address;
  res.setHeader("Content-Disposition", `attachment; filename="${name.replace(/\s+/g, "_")}.vcf"`);
  res.setHeader("Content-Type", "text/vcard");
