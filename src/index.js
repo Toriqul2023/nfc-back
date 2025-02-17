@@ -18,13 +18,12 @@ const iontroRoute=require('./routes/intro.route')
 
 const port = 1000
 app.post('/vcard',async(req,res)=>{
-  const { name, phone, email, address, designation, fbLink, linkedin,insta,twitter} = req.body;
- let vCard = new vCardsJS();
+  const { name, phone, email, address} = req.body;
+ let vCard =  vCardsJS();
  vCard.Name = name;
  vCard.phone = phone;
  vCard.email = email;
  vCard.address = address;
- vCard.url = website;
  vCard.workAddress = address;
  res.setHeader("Content-Disposition", `attachment; filename="${name.replace(/\s+/g, "_")}.vcf"`);
  res.setHeader("Content-Type", "text/vcard");
