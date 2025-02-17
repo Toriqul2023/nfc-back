@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose=require('mongoose')
 const app = express()
 const cors=require('cors')
+var vCardsJS = require('vcards-js');
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -16,7 +17,22 @@ const projectRoute=require('./routes/project.route')
 const iontroRoute=require('./routes/intro.route')
 
 const port = 1000
+app.post('/vcard',async(req,res)=>{
+  const { name, phone, email, address, designation, fbLink, linkedin,insta,twitter} = req.body;
+ let vCard = new vCardsJS();
+ vCard.Name = name;
+ vCard.phone = phone;
+ vCard.email = email;
+ vCard.address = address;
+ vCard.url = website;
+ vCard.workAddress = address;
+ res.setHeader("Content-Disposition", `attachment; filename="${name.replace(/\s+/g, "_")}.vcf"`);
+ res.setHeader("Content-Type", "text/vcard");
+ 
 
+
+  res.send(vCard.getFormattedString())
+})
 
 const connectbd=async()=>{
       try{
