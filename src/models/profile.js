@@ -4,6 +4,7 @@ const profileSchema=new mongoose.Schema({
     userName:{type:String,required:false},
     nickName:String,
     designation:String,
+    phone:String,
     image:String,
     address:String,
     fbLink:String,
