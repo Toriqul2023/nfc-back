@@ -20,9 +20,9 @@ exports.postreginfo=async(req,res)=>{
 }
 exports.getreginfo=async(req,res)=>{
         try{
-            const {userName}=req.query
-            const result = await regModel.find({})
-            
+            const {username}=req.query
+            const result = await regModel.find({userName:username})
+            console.log(result.length)
             res.json({result});
         }
         catch(err){
