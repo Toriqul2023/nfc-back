@@ -4,7 +4,7 @@ exports.postreginfo=async(req,res)=>{
             const {userName,emails,passwords}=req.body
             const santized=userName.replace(/\s+/g, '_').toLowerCase()
             const find=await regModel.find({userName:santized})
-            if(find){
+            if(find.length>0){
                return res.send({count:1})
             }
             else{
