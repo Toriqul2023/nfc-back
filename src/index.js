@@ -15,13 +15,14 @@ const reginfoRoute=require('./routes/reginfo.route')
 const profileRoute=require('./routes/profile.route')
 const projectRoute=require('./routes/project.route')
 const iontroRoute=require('./routes/intro.route')
+const educationRoute=require('./routes/education.route')
 
 const port = 1000
 app.post('/vcard',async(req,res)=>{
   const { name, phone, email, address} = req.body;
  let vCard =  vCardsJS();
  vCard.name = name;
- vCard.cellPhone = '01718850163';
+ vCard.cellPhone = phone;
  vCard.email = email;
  vCard.homeAddress.street = address;
  vCard.workAddress = address;
@@ -51,6 +52,7 @@ connectbd().then(()=>{
          app.use('/profile',profileRoute);
          app.use('/project',projectRoute)
          app.use('/intro',iontroRoute)
+         app.use('/education',educationRoute)
         
 })
 
