@@ -8,7 +8,7 @@ exports.postreginfo=async(req,res)=>{
                return res.send({count:1})
             }
             else{
-                const reginfo=new regModel({userName:santized,emails,passwords})
+                const reginfo=new regModel({uid,userName:santized,emails,passwords})
                 const result=await reginfo.save()
                 res.send({result});
             }
