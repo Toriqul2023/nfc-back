@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose=require('mongoose')
 const app = express()
+// const {NFC }= require('nfc-pcsc');
 const cors=require('cors')
 var vCardsJS = require('vcards-js');
 app.use(cors())
@@ -18,6 +19,24 @@ const iontroRoute=require('./routes/intro.route')
 const educationRoute=require('./routes/education.route')
 
 const port = 1000
+let latestUID = null;
+// const nfc=new NFC()
+// nfc.on('reader', reader => {
+//   console.log(`NFC Reader Detected: ${reader.name}`);
+
+//   reader.on('card', card => {
+//       const uid = card.uid;
+//       console.log(`Card UID: ${uid}`);  // Backend এ Console দেখাবে
+//   });
+
+//   reader.on('card-off', () => {
+//       console.log('Card removed.');
+//   });
+
+//   reader.on('error', err => {
+//       console.error('Reader Error:', err);
+//   });
+// });
 app.post('/vcard',async(req,res)=>{
   const { name, phone, email, address} = req.body;
  let vCard =  vCardsJS();

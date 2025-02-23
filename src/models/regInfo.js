@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 
 const regInfoSchema=new mongoose.Schema({
+        uid:String,
         userName:String,
         emails:String,
         passwords:String,

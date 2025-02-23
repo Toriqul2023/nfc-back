@@ -1,10 +1,10 @@
 const regModel=require('../models/regInfo');
 exports.postreginfo=async(req,res)=>{
         try{
-            const {userName,emails,passwords}=req.body
+            const {uid,userName,emails,passwords}=req.body
             const santized=userName.replace(/\s+/g, '_').toLowerCase()
-            const find=await regModel.find({userName:santized})
-            if(find.length>0){
+            const find=await regModel.find({uid})
+            if(find.length>0){ 
                return res.send({count:1})
             }
             else{
@@ -28,4 +28,14 @@ exports.getreginfo=async(req,res)=>{
         catch(err){
             console.log(err);
         }
+}
+exports.idwise=async(req,res)=>{
+    try{
+        const {id}=req.params
+        const result=await regModel.find({_id:id})
+        res.send({result});
+    }
+    catch(err){
+
+    }
 }
