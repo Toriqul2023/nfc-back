@@ -19,10 +19,10 @@ exports.postprofile=async(req,res)=>{
     }
 }
 exports.updateprofile=async(req,res)=>{
-    const {username}=req.query
+    const {uid}=req.query
     const santized=username.replace(/\s+/g, '_').toLowerCase()
     const {nickName,designation,image,address,fbLink,linkedin,insta,twitter}=req.body
-    const filter={userName:santized}
+    const filter={uid}
     const options = { upsert: true };
     const updateDoc = {
         $set: {
@@ -35,8 +35,8 @@ exports.updateprofile=async(req,res)=>{
 }
 exports.getprofile=async(req,res)=>{
     try {
-           const {username}=req.query
-           const result=await ProfileModel.find({userName:username})
+           const {uid}=req.query
+           const result=await ProfileModel.find({uid})
            res.send({result})
     }
     catch(err){
