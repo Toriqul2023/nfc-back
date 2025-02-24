@@ -2,9 +2,9 @@ const ProjectModel=require('../models/project')
 exports.postproject=async(req,res)=>{
     try{
       
-        const {userName,title,description,link}=req.body
-        const santized=userName.replace(/\s+/g, '_')
-        const Project=new ProjectModel({userName:santized,title,description,link})
+        const {uid,title,description,link}=req.body
+        
+        const Project=new ProjectModel({uid,title,description,link})
         const result=await Project.save()
         res.send({result})
     }
@@ -37,9 +37,9 @@ exports.updateproject=async(req,res)=>{
 
 exports.getproject=async(req,res)=>{
     try{
-        const {username}=req.query
-        const santized=username.replace(/\s+/g, '_')
-        const result=await ProjectModel.find({userName:santized})
+        const {uid}=req.query
+        
+        const result=await ProjectModel.find({uid})
         res.send({result});
     }
     catch(err){

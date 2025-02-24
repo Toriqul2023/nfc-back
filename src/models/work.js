@@ -7,7 +7,7 @@ const workSchema=new mongoose.Schema({
     designation:String,
     company:String,
 
-    userName:String,
+   
 })
 
 const work=mongoose.model('work',workSchema);

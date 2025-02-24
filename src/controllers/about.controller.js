@@ -1,14 +1,14 @@
 const aboutModel=require('../models/about');
 exports.postabout=async(req,res)=>{
         try{
-            const {uid,title,shortTitle,userName}=req.body
-            const santized=userName.replace(/\s+/g, '_').toLowerCase()
+            const {uid,title,shortTitle}=req.body
+           
             const find=await aboutModel.findOne({uid})
             if(find){
                 return res.send({count:1});
             }
             else{
-                const About=new aboutModel({title,shortTitle,userName:santized})
+                const About=new aboutModel({title,shortTitle})
                 const result=await About.save()
                 res.send({result});
             }
@@ -19,8 +19,8 @@ exports.postabout=async(req,res)=>{
         }
 }
 exports.updateabout=async(req,res)=>{
-    const {username}=req.query
-    const santized=username.replace(/\s+/g, '_').toLowerCase()
+    const {uid}=req.query
+    
     const {title,shortTitle}=req.body
     const filter={userName:santized}
     const options = { upsert: true };
@@ -35,10 +35,10 @@ exports.updateabout=async(req,res)=>{
 }
 exports.getabout=async(req,res)=>{
         try{
-            const {username}=req.query
-            const santized=username? username.replace(/\s+/g, '_').toLowerCase():''
-            console.log(username)
-            const result = await aboutModel.find({userName:santized})
+            const {uid}=req.query
+           
+            
+            const result = await aboutModel.find({uid})
             
             res.send({result});
         }

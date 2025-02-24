@@ -1,10 +1,10 @@
 const EducationModel=require('../models/education')
 exports.posteducation=async(req,res)=>{
   try{
-    const {userName,institution,degree,startDate,endDate}=req.body
-    const santized=userName.replace(/\s+/g, '_').toLowerCase()
+    const {uid,institution,degree,startDate,endDate}=req.body
+   
 
-    const Education=new EducationModel({userName:santized,institution,degree,startDate,endDate})
+    const Education=new EducationModel({uid,institution,degree,startDate,endDate})
     const result=await Education.save()
     res.send({result})
     
@@ -16,9 +16,9 @@ exports.posteducation=async(req,res)=>{
 }
 exports.geteducation=async(req,res)=>{
     try{
-            const {username}=req.query
-            const santized=username.replace(/\s+/g, '_').toLowerCase()
-            const result=await EducationModel.find({userName:santized})
+            const {uid}=req.query
+            
+            const result=await EducationModel.find({uid})
             res.send({result})
 
     }

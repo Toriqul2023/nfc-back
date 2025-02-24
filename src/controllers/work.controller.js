@@ -1,9 +1,9 @@
 const workModel=require('../models/work')
 
 exports.postwork=async(req,res)=>{
-    const{sYear,lYear,designation,company,userName}=req.body;
-    const santized=userName.replace(/\s+/g, '_').toLowerCase()
-    const Work=new workModel({sYear,lYear,designation,company,userName:santized})
+    const{uid,sYear,lYear,designation,company}=req.body;
+   
+    const Work=new workModel({uid,sYear,lYear,designation,company})
     const result=await Work.save();
 
     res.send(result);
@@ -25,8 +25,8 @@ exports.updatework=async(req,res)=>{
 }
 exports.getwork=async(req,res)=>{
     try{
-       const {username}=req.query
-       const result=await workModel.find({userName:username})
+       const {uid}=req.query
+       const result=await workModel.find({uid})
        res.send({result});
     }
     catch(err){

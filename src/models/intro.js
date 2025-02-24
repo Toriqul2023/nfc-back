@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const introSchema=new mongoose.Schema({
     uid:String,
-    userName:String,
+   
     heading:String,
     metaInfo:String,
     experience:String,

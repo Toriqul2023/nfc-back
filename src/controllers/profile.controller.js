@@ -2,14 +2,14 @@ const ProfileModel=require('../models/profile')
 
 exports.postprofile=async(req,res)=>{
     try{
-            const {uid,userName,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter}=req.body
-            const santized=userName ? userName.replace(/\s+/g, '_').toLowerCase():undefined;
+            const {uid,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter}=req.body
+           
             const find=await ProfileModel.find({uid})
             if(find.length>0){
                 return res.send({count:1});
             }
             else{
-            const Profile=new ProfileModel({uid,userName:santized,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter})
+            const Profile=new ProfileModel({uid,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter})
             const result=await Profile.save()
             res.send({result})
             }
@@ -20,7 +20,7 @@ exports.postprofile=async(req,res)=>{
 }
 exports.updateprofile=async(req,res)=>{
     const {uid}=req.query
-    const santized=username.replace(/\s+/g, '_').toLowerCase()
+   
     const {nickName,designation,image,address,fbLink,linkedin,insta,twitter}=req.body
     const filter={uid}
     const options = { upsert: true };

@@ -1,14 +1,14 @@
 const regModel=require('../models/regInfo');
 exports.postreginfo=async(req,res)=>{
         try{
-            const {uid,userName,emails,passwords}=req.body
-            const santized=userName.replace(/\s+/g, '_').toLowerCase()
+            const {uid,emails,passwords}=req.body
+         
             const find=await regModel.find({uid})
             if(find.length>0){ 
                return res.send({count:1})
             }
             else{
-                const reginfo=new regModel({uid,userName:santized,emails,passwords})
+                const reginfo=new regModel({uid,emails,passwords})
                 const result=await reginfo.save()
                 res.send({result});
             }
