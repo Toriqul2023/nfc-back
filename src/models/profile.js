@@ -1,6 +1,7 @@
 const mongoose=require('mongoose')
 
 const profileSchema=new mongoose.Schema({
+    uid:String,
     userName:{type:String,required:false},
     nickName:String,
     designation:String,

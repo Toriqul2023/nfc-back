@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 
 
 const aboutSchema=new mongoose.Schema({
+    uid:String,
     title:String,
     shortTitle:String,
     userName:String,

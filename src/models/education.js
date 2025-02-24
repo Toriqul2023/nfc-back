@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const educationSchema = new mongoose.Schema({
+  uid:String,
   userName:String,
   institution: { type: String, },
   degree: { type: String, },

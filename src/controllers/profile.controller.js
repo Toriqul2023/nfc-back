@@ -2,14 +2,14 @@ const ProfileModel=require('../models/profile')
 
 exports.postprofile=async(req,res)=>{
     try{
-            const {userName,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter}=req.body
+            const {uid,userName,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter}=req.body
             const santized=userName ? userName.replace(/\s+/g, '_').toLowerCase():undefined;
-            const find=await ProfileModel.find({userName:santized})
+            const find=await ProfileModel.find({uid})
             if(find.length>0){
                 return res.send({count:1});
             }
             else{
-            const Profile=new ProfileModel({userName:santized,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter})
+            const Profile=new ProfileModel({uid,userName:santized,nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter})
             const result=await Profile.save()
             res.send({result})
             }

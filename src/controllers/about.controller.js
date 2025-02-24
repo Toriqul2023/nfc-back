@@ -1,9 +1,9 @@
 const aboutModel=require('../models/about');
 exports.postabout=async(req,res)=>{
         try{
-            const {title,shortTitle,userName}=req.body
+            const {uid,title,shortTitle,userName}=req.body
             const santized=userName.replace(/\s+/g, '_').toLowerCase()
-            const find=await aboutModel.findOne({userName:santized})
+            const find=await aboutModel.findOne({uid})
             if(find){
                 return res.send({count:1});
             }

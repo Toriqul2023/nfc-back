@@ -1,10 +1,10 @@
 const introModel=require('../models/intro');
 exports.postintro=async(req,res)=>{
         try{
-            const {userName,
+            const {uid,userName,
                 heading, metaInfo, experience, projects,}=req.body
             const santized=userName.replace(/\s+/g, '_').toLowerCase()
-            const find=await introModel.findOne({userName:santized})
+            const find=await introModel.findOne({uid})
             if(find){
                 return res.send({count:1});
             }
