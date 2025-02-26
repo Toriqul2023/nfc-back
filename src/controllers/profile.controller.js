@@ -21,12 +21,12 @@ exports.postprofile=async(req,res)=>{
 exports.updateprofile=async(req,res)=>{
     const {uid}=req.query
    
-    const {nickName,designation,image,address,fbLink,linkedin,insta,twitter}=req.body
+    const {nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter}=req.body
     const filter={uid}
     const options = { upsert: true };
     const updateDoc = {
         $set: {
-          nickName,designation,image,address,fbLink,linkedin,insta,twitter
+          nickName,designation,phone,image,address,fbLink,linkedin,insta,twitter
         },
       };
       const result=await ProfileModel.updateOne(filter,updateDoc,options)
