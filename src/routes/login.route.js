@@ -4,3 +4,4 @@ const loginController=require('../controllers/login.controller')
 
 
 router.get('/',loginController.getLogin)
+module.exports=router
