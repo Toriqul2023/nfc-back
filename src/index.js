@@ -17,6 +17,7 @@ const profileRoute=require('./routes/profile.route')
 const projectRoute=require('./routes/project.route')
 const iontroRoute=require('./routes/intro.route')
 const educationRoute=require('./routes/education.route')
+const loginRoute=require('./routes/login.route')
 
 const port = 1000
 let latestUID = null;
@@ -72,6 +73,7 @@ connectbd().then(()=>{
          app.use('/project',projectRoute)
          app.use('/intro',iontroRoute)
          app.use('/education',educationRoute)
+         app.use('/login',loginRoute)
         
 })
 
