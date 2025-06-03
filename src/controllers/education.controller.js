@@ -18,10 +18,10 @@ exports.updateEducation=async(req,res)=>{
    try{
     const {id}=req.params
     const query={_id:id}
-    const {ininstitution,degree,startDate,endDate}=req.body
+    const {institution,degree,startDate,endDate}=req.body
     const updateDoc = {
         $set: {
-          ininstitution,degree,startDate,endDate
+          institution,degree,startDate,endDate
         },
       };
     
