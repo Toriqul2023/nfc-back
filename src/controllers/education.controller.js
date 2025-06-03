@@ -27,7 +27,7 @@ exports.updateEducation=async(req,res)=>{
     
       const options = { upsert: true };
       console.log(query)
-      const result=await ProjectModel.findByIdAndUpdate(query,req.body,options)
+      const result=await EducationModel.findByIdAndUpdate(query,req.body,options)
       res.send({result});
    }
    catch(err){
